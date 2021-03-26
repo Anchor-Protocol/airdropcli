@@ -10,8 +10,8 @@ Command-line interface for claiming airdrop.
   - [Execute](#execute)
   - [Query](#query)
 - [Examples](#examples)
-  - [Claim Airdrop](#Claim Airdrop)
-  - [Query Airdrop State](#Query Airdrop State of An Address)
+  - [Claim Airdrop](#Claim-Airdrop)
+  - [Query Airdrop State](#Query-Airdrop-State-of-An-Address)
 - [License](#license)
 ## Setup
 

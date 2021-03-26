@@ -11,6 +11,9 @@
     "dist",
     "bin"
   ],
+  "publishConfig": {
+    "access": "publish"
+  },
   "scripts": {
     "build": "tsc",
     "test": "jest",

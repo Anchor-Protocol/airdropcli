@@ -1,0 +1,16 @@
+node_modules/
+yarn-error.log
+keystore.db
+
+# IDEs
+*.iml
+.idea
+.DS_Store
+
+# artifacts
+dist
+out
+
+# output
+coverage/
+test/storage/

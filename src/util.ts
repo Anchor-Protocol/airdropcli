@@ -1,8 +1,6 @@
-import { program, Command } from 'commander';
+import {Command } from 'commander';
 import * as commander from 'commander';
-const yesno = require('yesno');
 import * as yaml from 'yaml';
-import * as _ from 'lodash';
 import fetch from 'cross-fetch';
 
 import {
@@ -18,6 +16,7 @@ import {
   fabricateAirdropClaim
 } from '@anchor-protocol/anchor.js';
 import { CLIKey } from '@terra-money/terra.js/dist/key/CLIKey';
+const yesno = require('yesno');
 
 interface Airdrop {
   createdAt: string; // date string
@@ -206,7 +205,7 @@ async function handleExecCommand(
   if (!!exec.accountNumber || !!exec.sequence) {
     // don't look up account-number and sequence values from blockchain
     // ensure that both account number and sequence number are set
-    if (exec.accountNumber === undefined || exec.sequence == undefined) {
+    if (exec.accountNumber === undefined || exec.sequence === undefined) {
       throw new Error(
         `both account-number and sequence must be provided if one is provided.`
       );
@@ -273,7 +272,6 @@ async function handleExecCommand(
       let msg = unsignedTx.msgs[0].toData() as any;
       msg.value.execute_msg = (unsignedTx
         .msgs[0] as MsgExecuteContract).execute_msg;
-
       console.log(
         yaml.stringify({
           chainId,
@@ -330,26 +328,15 @@ const exec = createExecMenu(
   'Search the airdrop state of the address and send claim airdrop message'
 );
 
-const claimAirdrop = exec
-  .option('--address <AccAddress>', 'claim airdrop for the specified address')
-  .action(async ({ address }: Option) => {
-    if (address === undefined) {
-      const key = new CLIKey({ keyName: exec.from, home: exec.home });
-      const msgs = await send_claim(key.accAddress);
-      if (msgs.length == 0) {
-        console.log('No Airdrops to claim');
-      } else {
-        await handleExecCommand(exec, msgs);
-      }
-    } else {
-      const msgs = await send_claim(address);
-      if (msgs.length == 0) {
-        console.log('No Airdrops to claim');
-      } else {
-        await handleExecCommand(exec, msgs);
-      }
-    }
-  });
+const claimAirdrop = exec.action(async () => {
+  const key = new CLIKey({ keyName: exec.from, home: exec.home });
+  const msgs = await send_claim(key.accAddress);
+  if (msgs.length === 0) {
+    console.log('No Airdrops to claim');
+  } else {
+    await handleExecCommand(exec, msgs);
+  }
+});
 
 exec_command.addCommand(exec);
 

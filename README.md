@@ -1,18 +1,17 @@
 # `airdropcli` <!-- omit in toc -->
 
-Command-line interface for Anchor Protocol on Terra.
+Command-line interface for claiming airdrop.
 
 ## Table of Contents <!-- omit in toc -->
 - [Setup](#setup)
 - [Configuration](#configuration)
   - [Specifying LCD settings](#specifying-lcd-settings)
-  - [Specifying Contracts](#specifying-contracts)
 - [Usage](#usage)
   - [Execute](#execute)
   - [Query](#query)
 - [Examples](#examples)
-  - [Bond bLuna](#bond-bluna)
-  - [Query bLuna Balance](#query-bluna-balance)
+  - [Claim Airdrop](#Claim Airdrop)
+  - [Query Airdrop State](#Query Airdrop State of An Address)
 - [License](#license)
 ## Setup
 
@@ -57,17 +56,17 @@ This setting provides the address of contracts and specifies the setting for LCD
 Each network config should define how to connect to the Terra blockchain via LCD parameters.
 ```json
 {
-"lcd": {
- chainID: 'columbus-4',
-  URL: 'https://lcd.terra.dev',
-  gasPrices: {
-    uluna: 0.15,
-    usdr: 0.1018,
-    uusd: 0.15,
-    ukrw: 178.05,
-    umnt: 431.6259
-  },
-  gasAdjustment: '1.2'
+  "lcd": {
+    "chainID": "columbus-4",
+    "URL": "https://lcd.terra.dev",
+    "gasPrices": {
+      "uluna": 0.15,
+      "usdr": 0.1018,
+      "uusd": 0.15,
+      "ukrw": 178.05,
+      "umnt": 431.6259
+    },
+    "gasAdjustment": 1.2
   }
 }
 ```
@@ -76,8 +75,8 @@ Each network config should define how to connect to the Terra blockchain via LCD
 
 `airdropcli` allows you to:
 
-- [**execute**](#execute) state-changing functions on Anchor smart contracts
-- [**query**](#query) readonly data endpoints on Anchor smart contracts
+- [**execute**](#execute) state-changing functions on Airdrop smart contracts
+- [**query**](#query) readonly data endpoints on Airdrop state
 
 ### Execute
 
@@ -103,7 +102,6 @@ Options:
   --gas <int|auto>              *Gas limit to set per-transaction; set to "auto" to calculate required gas automatically
   --gas-adjustment <float>      Adjustment factor to be multiplied against the estimate returned by the tx simulation
   --gas-prices <coins>          Gas prices to determine the transaction fee (e.g. 10uluna,12.5ukrw)
-  --address <AccAddress>        claim airdrop for the specified address
 
 ```
 

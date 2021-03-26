@@ -1,7 +1,5 @@
-import { program, Command } from 'commander';
-const yesno = require('yesno');
-import commands, { exec_command } from './util';
-import * as _ from 'lodash';
+import { program } from 'commander';
+import commands from './util';
 
 process.on('unhandledRejection', (error) => {
   if (program.verbose) {
@@ -26,5 +24,3 @@ export function run(): void {
     console.log(e.message);
   }
 }
-
-run();

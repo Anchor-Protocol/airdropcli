@@ -125,7 +125,7 @@ All examples assume you have a key in `terracli` keychain called `test1`.
 
 ### Claim Airdrop
 ```bash
-airdropcli x claim-airdrop --from test1 --gas auto --fees=1000000uusd 
+airdropcli x claim-airdrop --from test1 --gas auto --fees=100000uusd 
 ```
 ### Query Airdrop State of An Address
 you can get information for your address with the following query: 

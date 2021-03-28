@@ -12,7 +12,7 @@
     "bin"
   ],
   "publishConfig": {
-    "access": "publish"
+    "access": "public"
   },
   "scripts": {
     "build": "tsc",
